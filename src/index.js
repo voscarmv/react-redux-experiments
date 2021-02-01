@@ -1,61 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Board from './board';
 
-const Square = () => {
-  return (
-    <button className="square" onClick={this.props.onClick}>
-      {this.props.value}
-    </button>
-  );
-};
-
-class Board extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      squares: Array(9).fill('o'),
-    }
-  }
-
-  handleClick(i){
-    const squares = this.state.squares.slice();
-    squares[i] = 'x';
-    this.setState(
-      {squares: squares}
-    );
-  }
-
-  renderSquare(i) {
-    return <Square value={this.state.squares[i]} onClick={() => {this.handleClick(i)}} />;
-  }
-
-  render() {
-    const status = 'Next player: X';
-
-    return (
-      <div>
-        <div className="status">{status}</div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </div>
-    );
-  }
-}
-
+// eslint-disable-next-line react/prefer-stateless-function
 class Game extends React.Component {
   render() {
     return (
@@ -76,5 +24,5 @@ class Game extends React.Component {
 
 ReactDOM.render(
   <Game />,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
